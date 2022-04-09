@@ -1,15 +1,17 @@
-<script lang="ts">
+<script lang="ts" setup>
 console.log("home");
-export default {};
 </script>
 <template>
+    <img src="../assets/banner.png" alt="" />
     <h1>Home</h1>
 </template>
 
 <style lang="scss">
 @import "../variables.scss";
-h1 {
-    background-color: $background;
-    color: $light;
+img {
+    width: 50%;
+    margin: auto;
+    height: auto;
+    display: block;
 }
 </style>
