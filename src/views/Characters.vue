@@ -35,9 +35,27 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+@import "../variables";
 .container {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: $medium) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: $small) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: $v-small) {
+    .container {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
