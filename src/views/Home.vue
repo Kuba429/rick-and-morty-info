@@ -6,7 +6,7 @@ console.log("home");
     <h1>Home</h1>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../variables.scss";
 img {
     width: 50%;

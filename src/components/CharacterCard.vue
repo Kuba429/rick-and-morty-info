@@ -26,10 +26,11 @@ console.log(character?.name);
     img {
         width: auto;
         height: auto;
-        object-fit: scale-down;
+        object-fit: cover;
+        object-position: center;
     }
     .data {
-        height: 100px;
+        height: 60px;
         padding: 3px;
         background-color: $background2;
         display: flex;

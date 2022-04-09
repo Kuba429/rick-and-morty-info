@@ -36,9 +36,8 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
 }
 </style>
