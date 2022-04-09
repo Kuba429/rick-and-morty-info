@@ -10,7 +10,6 @@
 <script setup lang="ts">
 import { Character } from "../Interfaces";
 const { character } = defineProps<{ character: Character }>();
-console.log(character?.name);
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Characters</h1>
+        <PaginationController :pages="pages" />
         <div class="container">
             <CharacterCard
                 v-if="characters[0]"
@@ -12,25 +13,30 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import { Character } from "../Interfaces";
 import CharacterCard from "../components/CharacterCard.vue";
+import PaginationController from "../components/PaginationController.vue";
 
-const page = useRoute().params.page;
 const characters = ref<Character[]>([]);
-const otherPages = ref({ prev: null, next: null });
+const currentPage = parseInt(useRoute().params.page as string);
+const pages = reactive({
+    current: currentPage,
+    prev: currentPage > 1 ? currentPage - 1 : 0,
+    next: 0,
+});
+
 onMounted(async () => {
     // get needed data and set the refs
     let response = await axios.get(
-        `https://rickandmortyapi.com/api/character/?page=${page}`
+        `https://rickandmortyapi.com/api/character/?page=${currentPage}`
     );
+    // set characters
     characters.value = response.data.results;
-    otherPages.value = {
-        prev: response.data.info.prev,
-        next: response.data.info.next,
-    };
+    // set next page if present
+    pages.next = currentPage != response.data.info.pages ? currentPage + 1 : 0;
 });
 </script>
 

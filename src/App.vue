@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar.vue";
 <template>
     <Navbar />
     <div id="main-container">
-        <router-view></router-view>
+        <!-- :key forces rerender on route change -->
+        <router-view :key="$route.fullPath"></router-view>
     </div>
 </template>
 
