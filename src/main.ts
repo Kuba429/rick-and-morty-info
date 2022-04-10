@@ -37,11 +37,13 @@ const router = createRouter({
             path: "/episodes",
             name: "Episodes",
             component: () => import("./views/Episodes.vue"),
-        },
-        {
-            path: "/episode/:id",
-            name: "SpecificEpisode",
-            component: () => import("./views/SpecificEpisode.vue"),
+            children: [
+                {
+                    path: ":id",
+                    name: "SpecificEpisode",
+                    component: () => import("./views/SpecificEpisode.vue"),
+                },
+            ],
         },
     ],
 });
