@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/episodes/' + episode.id" class="card">
+    <router-link :to="'/episode/' + episode.id" class="card">
         <b class="episode">{{ episode.episode }}</b>
         <p class="name">{{ episode.name }}</p>
         <p class="air-date">{{ episode.air_date }}</p>
