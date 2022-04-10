@@ -30,15 +30,23 @@ const handlePageInput = (e: Event) => {
     // for some reason select tag scales weird with rems and pixels, best way i found is to just use %
     position: absolute;
     height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
     border-radius: 0;
+    cursor: pointer;
     appearance: none;
     outline: none;
     background: inherit;
     color: inherit;
     border: none;
     font-size: 1rem;
+    // background-color: red;
+}
+// safari doesnt support text-align-last attribute. Drawback of the solution below is that on safari user has to click on the number itself. Other solution would be to use text-indent but the text wouldn't be perfectly centered as numbers differ in width.
+@supports (text-align-last: center) {
+    #page-select {
+        width: 100%;
+        top: 0;
+        left: 0;
+        text-align-last: center;
+    }
 }
 </style>
