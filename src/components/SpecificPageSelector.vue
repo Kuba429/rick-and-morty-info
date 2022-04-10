@@ -1,11 +1,44 @@
 <template>
-    <div class="block">{{ current }}</div>
+    <div class="block">
+        <select @input="handlePageInput" name="page-select" id="page-select">
+            <option
+                v-for="number in props.maxPages"
+                :selected="number == props.current"
+                :value="number"
+            >
+                {{ number }}
+            </option>
+        </select>
+    </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
     current: number;
+    maxPages: number;
 }>();
+const emit = defineEmits<{
+    (e: "changePage", pageNumber: number): void;
+}>();
+const handlePageInput = (e: Event) => {
+    emit("changePage", parseInt((e.target as HTMLSelectElement).value, 10));
+};
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+#page-select {
+    // for some reason select tag scales weird with rems and pixels, best way i found is to just use %
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    appearance: none;
+    outline: none;
+    background: inherit;
+    color: inherit;
+    border: none;
+    font-size: 1rem;
+}
+</style>

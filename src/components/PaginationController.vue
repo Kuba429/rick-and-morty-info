@@ -7,7 +7,11 @@
             icon="angle-left"
         />
 
-        <SpecificPageSelector :current="pages.current" />
+        <SpecificPageSelector
+            @changePage="(num) => $router.push(pages.route + num)"
+            :max-pages="pages.maxPages"
+            :current="pages.current"
+        />
 
         <PageLink
             :route="pages.route"
@@ -26,6 +30,7 @@ const { pages } = defineProps<{
         prev: number;
         current: number;
         next: number;
+        maxPages: number;
     };
 }>();
 </script>
@@ -39,6 +44,7 @@ const { pages } = defineProps<{
     margin: 1rem;
     gap: 5px;
     .block {
+        position: relative;
         padding: 1rem;
         height: 1rem;
         width: 1rem;
@@ -46,6 +52,9 @@ const { pages } = defineProps<{
         color: $light;
         text-align: center;
         transition: ease all 70ms;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &.not-active {
             cursor: not-allowed;
             color: $background2;

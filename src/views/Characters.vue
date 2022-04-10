@@ -28,6 +28,7 @@ const pages = reactive({
     current: currentPage,
     prev: currentPage > 1 ? currentPage - 1 : 0,
     next: 0,
+    maxPages: 0,
 });
 
 onMounted(async () => {
@@ -39,6 +40,7 @@ onMounted(async () => {
     characters.value = response.data.results;
     // set next page if present
     pages.next = currentPage != response.data.info.pages ? currentPage + 1 : 0;
+    pages.maxPages = parseInt(response.data.info.pages);
 });
 </script>
 
