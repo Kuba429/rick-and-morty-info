@@ -1,4 +1,5 @@
 <template>
+    <!-- display link if the page it's leading to isn't 0, otherwise show div mimicing the link -->
     <router-link v-if="pageNumber > 0" class="block" :to="route + pageNumber">
         <font-awesome-icon :icon="icon" />
     </router-link>

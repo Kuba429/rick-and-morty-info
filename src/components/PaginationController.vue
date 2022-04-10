@@ -1,6 +1,5 @@
 <template>
     <div class="pagination-controller">
-        <!-- display link if the page it's leading to isn't 0, otherwise show div mimicing the link -->
         <PageLink
             :route="pages.route"
             :page-number="pages.prev"
