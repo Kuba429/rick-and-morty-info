@@ -24,6 +24,7 @@ const characters = ref<Character[]>([]);
 // default to 1 if no page is specified
 const currentPage = parseInt(useRoute().params.page as string, 10) || 1;
 const pages = reactive({
+    route: "/characters/",
     current: currentPage,
     prev: currentPage > 1 ? currentPage - 1 : 0,
     next: 0,
