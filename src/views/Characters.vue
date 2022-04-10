@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Characters</h1>
-        <PaginationController :pages="pages" />
         <div class="container">
             <CharacterCard
                 v-if="characters[0]"
@@ -9,11 +8,12 @@
                 :character="character"
             />
         </div>
+        <PaginationController :pages="pages" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import { Character } from "../Interfaces";
@@ -21,7 +21,8 @@ import CharacterCard from "../components/CharacterCard.vue";
 import PaginationController from "../components/PaginationController.vue";
 
 const characters = ref<Character[]>([]);
-const currentPage = parseInt(useRoute().params.page as string);
+// default to 1 if no page is specified
+const currentPage = parseInt(useRoute().params.page as string, 10) || 1;
 const pages = reactive({
     current: currentPage,
     prev: currentPage > 1 ? currentPage - 1 : 0,
