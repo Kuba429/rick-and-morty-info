@@ -1,6 +1,13 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
+import { createRouter, createWebHistory } from "vue-router";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faAngleLeft, faAngleRight);
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -33,5 +40,7 @@ const router = createRouter({
         },
     ],
 });
-
-createApp(App).use(router).mount("#app");
+createApp(App)
+    .component("font-awesome-icon", FontAwesomeIcon)
+    .use(router)
+    .mount("#app");
