@@ -1,9 +1,9 @@
 <template>
-    <div class="card">
+    <router-link :to="'/episodes/' + episode.id" class="card">
         <b class="episode">{{ episode.episode }}</b>
         <p class="name">{{ episode.name }}</p>
         <p class="air-date">{{ episode.air_date }}</p>
-    </div>
+    </router-link>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +16,10 @@ const props = defineProps<{
 <style scoped lang="scss">
 @import "../variables.scss";
 .card {
+    text-decoration: none;
+    color: inherit;
     background-color: $background2;
+    transition: ease background 85ms;
     margin: 0.5rem 0;
     padding: 1rem;
     border-radius: 3px;
@@ -25,6 +28,8 @@ const props = defineProps<{
     grid-template-columns: auto 1fr;
     // gap: 1rem;
     .episode {
+        text-decoration: none;
+        color: inherit;
         grid-row: 1/3;
         margin-right: 1rem;
         display: flex;
@@ -32,6 +37,10 @@ const props = defineProps<{
         font-weight: bold;
         justify-content: center;
         align-items: center;
+        transition: ease color 80ms;
+        &:hover {
+            color: rgba($color: $light, $alpha: 0.4);
+        }
     }
     p {
         padding: 0;
@@ -45,6 +54,9 @@ const props = defineProps<{
         grid-row: 2;
         font-size: 0.8rem;
         font-weight: lighter;
+    }
+    &:hover {
+        background-color: rgba($color: $background2, $alpha: 0.5);
     }
 }
 </style>
