@@ -29,7 +29,10 @@ const handlePageInput = (e: Event) => {
 #page-select {
     // for some reason select tag scales weird with rems and pixels, best way i found is to just use %
     position: absolute;
+    width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     border-radius: 0;
     cursor: pointer;
     appearance: none;
@@ -38,15 +41,14 @@ const handlePageInput = (e: Event) => {
     color: inherit;
     border: none;
     font-size: 1rem;
-    // background-color: red;
+    text-align-last: center;
 }
-// safari doesnt support text-align-last attribute. Drawback of the solution below is that on safari user has to click on the number itself. Other solution would be to use text-indent but the text wouldn't be perfectly centered as numbers differ in width.
-@supports (text-align-last: center) {
+// safari doens't support text-align-last attribute so we have to use this hacky way. As far as I know it's impossible to center select tag's content perfectly without text-align-last
+@supports not (text-align-last: center) {
     #page-select {
-        width: 100%;
-        top: 0;
-        left: 0;
-        text-align-last: center;
+        // closest I found to center
+        text-indent: 32%;
     }
 }
+// other solution is to leave width unset. This way tag is centered by flexbox parent, but it leaves some empty space, meaning a click on area not covered by select tag (corner, side etc of parent block) wouldn't work. It also isn't perfectly centered as two and one digit numbers differ in width
 </style>
