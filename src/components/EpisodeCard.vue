@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/episodes/' + episode.id" class="card">
+    <router-link :to="'/episode/' + episode.id" class="card">
         <b class="episode">{{ episode.episode }}</b>
         <p class="name">{{ episode.name }}</p>
         <p class="air-date">{{ episode.air_date }}</p>
@@ -24,9 +24,7 @@ const props = defineProps<{
     padding: 1rem;
     border-radius: 3px;
     display: grid;
-    // grid-template-rows: 1fr 1fr;
     grid-template-columns: auto 1fr;
-    // gap: 1rem;
     .episode {
         text-decoration: none;
         color: inherit;
@@ -38,9 +36,6 @@ const props = defineProps<{
         justify-content: center;
         align-items: center;
         transition: ease color 80ms;
-        &:hover {
-            color: rgba($color: $light, $alpha: 0.4);
-        }
     }
     p {
         padding: 0;
@@ -57,6 +52,7 @@ const props = defineProps<{
     }
     &:hover {
         background-color: rgba($color: $background2, $alpha: 0.5);
+        color: rgba($color: $light, $alpha: 0.7);
     }
 }
 </style>
