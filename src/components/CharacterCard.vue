@@ -1,10 +1,10 @@
 <template>
-    <div class="card">
-        <img :src="character.image" alt="" />
+    <router-link :to="'/character/' + character.id" class="card">
+        <img :src="character.image" :alt="character.name + ' image'" />
         <div class="data">
             {{ character.name }}
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script setup lang="ts">
@@ -22,6 +22,8 @@ const { character } = defineProps<{ character: Character }>();
     overflow: hidden;
     border: 1px solid transparent;
     transition: ease all 50ms;
+    color: $light;
+    text-decoration: none;
     img {
         width: auto;
         height: auto;

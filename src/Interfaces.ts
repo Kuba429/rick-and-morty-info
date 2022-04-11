@@ -15,6 +15,11 @@ export interface Character {
     species: string;
     image: string;
     url: string;
+    gender: string;
+    location: {
+        name: string;
+        url: string;
+    }[];
 }
 export interface Episode {
     id: number;
