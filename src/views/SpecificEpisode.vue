@@ -1,8 +1,17 @@
 <template>
     <div v-if="episode">
-        <h2>{{ episode.name }}</h2>
-        <h3>{{ episode.episode }}</h3>
-        <p>Aired on: {{ episode.air_date }}</p>
+        <h1>Episode {{ episode.id }}</h1>
+        <p>
+            Name: <b>{{ episode.name }}</b>
+        </p>
+        <p>
+            Season, Episode: <b>{{ episode.episode }}</b>
+        </p>
+        <p>
+            Aired on: <b>{{ episode.air_date }}</b>
+        </p>
+
+        <h2>Characters appearing in episode:</h2>
         <CharacterContainer :characters="characters" />
     </div>
 </template>
