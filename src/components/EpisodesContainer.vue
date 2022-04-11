@@ -1,5 +1,5 @@
 <template>
-    <div v-if="episodes.length > 1" class="container">
+    <div v-if="episodes.length > 1" class="episode-container">
         <EpisodeCard :episode="episode" v-for="episode in episodes" />
     </div>
 </template>
@@ -11,4 +11,10 @@ import EpisodeCard from "./EpisodeCard.vue";
 const { episodes } = defineProps<{ episodes: Episode[] }>();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.episode-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+</style>

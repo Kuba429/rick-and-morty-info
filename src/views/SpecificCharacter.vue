@@ -13,6 +13,7 @@
                 <p>
                     Gender: <span>{{ character.gender }}</span>
                 </p>
+                <EpisodesContainer :episodes="episodes" />
             </div>
         </div>
     </div>
@@ -22,28 +23,55 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { Character } from "../Interfaces";
+import { Character, Episode } from "../Interfaces";
+import EpisodesContainer from "../components/EpisodesContainer.vue";
 
 const { id } = useRoute().params;
 
 const character = ref<Character>();
+const episodes = ref<Episode[]>([]);
 onMounted(async () => {
     const response = await axios.get(
         "https://rickandmortyapi.com/api/character/" + id
     );
     character.value = response.data;
-    console.log(response.data);
+    // get all episodes for this character
+    const episodesIDs: string[] = [];
+    response.data.episode.forEach((episode: string) => {
+        episodesIDs.push(episode.split("/")[5]);
+    });
+
+    const episodesResponse = await axios.get(
+        "https://rickandmortyapi.com/api/episode/" + episodesIDs
+    );
+    //TODO: container doesn't display episode if there is only 1
+    episodes.value = Array.isArray(episodesResponse.data)
+        ? episodesResponse.data
+        : [episodesResponse.data];
 });
 </script>
 
 <style scoped lang="scss">
+@import "../variables";
 .container {
     display: flex;
+    align-items: flex-start;
     gap: 1rem;
+    img {
+        object-fit: cover;
+    }
 }
 .data {
+    // width: 100%;
     h1 {
         margin: 0;
+    }
+}
+@media (max-width: $small) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 </style>
