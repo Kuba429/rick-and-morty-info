@@ -1,13 +1,7 @@
 <template>
     <div>
         <h1>Characters</h1>
-        <div class="container">
-            <CharacterCard
-                v-if="characters[0]"
-                v-for="character in characters"
-                :character="character"
-            />
-        </div>
+        <CharacterContainer :characters="characters" />
         <PaginationController :pages="pages" />
     </div>
 </template>
@@ -17,8 +11,8 @@ import { onMounted, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import { Character } from "../Interfaces";
-import CharacterCard from "../components/CharacterCard.vue";
 import PaginationController from "../components/PaginationController.vue";
+import CharacterContainer from "../components/CharacterContainer.vue";
 
 const characters = ref<Character[]>([]);
 // default to 1 if no page is specified
@@ -44,28 +38,4 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss" scoped>
-@import "../variables";
-.container {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(5, 1fr);
-}
-
-@media (max-width: $medium) {
-    .container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: $small) {
-    .container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media (max-width: $v-small) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+<style lang="scss" scoped></style>
