@@ -49,11 +49,20 @@ onMounted(async () => {
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
     h1 {
         margin-bottom: 0;
     }
     input {
         font-size: 1rem;
+        border: 2px solid $background2;
+        border-radius: 2px;
+        background-color: $background;
+        color: $light;
+        &::placeholder {
+            color: rgba($color: $light, $alpha: 0.3);
+        }
     }
 }
 </style>
