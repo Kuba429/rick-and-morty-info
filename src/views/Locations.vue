@@ -21,11 +21,10 @@ const pages = reactive({
     maxPages: 0,
 });
 onMounted(async () => {
-    const response = await axios.get(
+    let response = await axios.get(
         "https://rickandmortyapi.com/api/location?page=" + currentPage
     );
     locations.value = response.data.results;
-
     // set next page if present
     pages.next = currentPage != response.data.info.pages ? currentPage + 1 : 0;
     pages.maxPages = parseInt(response.data.info.pages);
