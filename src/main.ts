@@ -37,6 +37,13 @@ const router = createRouter({
             path: "/locations",
             name: "Locations",
             component: () => import("./views/Locations.vue"),
+            children: [
+                {
+                    path: ":page",
+                    name: "LocationsPage",
+                    component: () => import("./views/Locations.vue"),
+                },
+            ],
         },
         {
             path: "/episodes",

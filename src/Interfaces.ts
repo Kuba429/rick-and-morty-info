@@ -29,3 +29,11 @@ export interface Episode {
     characters: string[];
     url: string;
 }
+export interface Location {
+    id: number;
+    dimension: string;
+    name: string;
+    residents: Character[];
+    type: string;
+    url: string;
+}
