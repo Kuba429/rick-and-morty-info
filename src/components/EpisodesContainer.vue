@@ -1,5 +1,5 @@
 <template>
-    <div v-if="episodes.length > 1" class="episode-container">
+    <div v-if="episodes.length > 0" class="episode-container">
         <EpisodeCard :episode="episode" v-for="episode in episodes" />
     </div>
 </template>

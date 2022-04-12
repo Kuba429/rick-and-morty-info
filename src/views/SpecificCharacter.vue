@@ -44,7 +44,6 @@ onMounted(async () => {
     const episodesResponse = await axios.get(
         "https://rickandmortyapi.com/api/episode/" + episodesIDs
     );
-    //TODO: container doesn't display episode if there is only 1
     episodes.value = Array.isArray(episodesResponse.data)
         ? episodesResponse.data
         : [episodesResponse.data];
