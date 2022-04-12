@@ -1,22 +1,20 @@
 <template>
-    <div v-if="character">
-        <div class="container">
-            <img :src="character.image" :alt="character.name + ' image'" />
-            <div class="data">
-                <h1>{{ character.name }}</h1>
-                <p>
-                    Status: <span>{{ character.status }}</span>
-                </p>
-                <p>
-                    Species: <span>{{ character.species }}</span>
-                </p>
-                <p>
-                    Gender: <span>{{ character.gender }}</span>
-                </p>
-                <br />
-                <h2>Appears in episode:</h2>
-                <EpisodesContainer :episodes="episodes" />
-            </div>
+    <div class="container" v-if="character">
+        <img :src="character.image" :alt="character.name + ' image'" />
+        <div class="data">
+            <h1>{{ character.name }}</h1>
+            <p>
+                Status: <span>{{ character.status }}</span>
+            </p>
+            <p>
+                Species: <span>{{ character.species }}</span>
+            </p>
+            <p>
+                Gender: <span>{{ character.gender }}</span>
+            </p>
+            <br />
+            <h2>Appears in episode:</h2>
+            <EpisodesContainer :episodes="episodes" />
         </div>
     </div>
 </template>
