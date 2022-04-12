@@ -13,6 +13,8 @@
                 <p>
                     Gender: <span>{{ character.gender }}</span>
                 </p>
+                <br />
+                <h2>Appears in episode:</h2>
                 <EpisodesContainer :episodes="episodes" />
             </div>
         </div>
@@ -64,6 +66,14 @@ onMounted(async () => {
     // width: 100%;
     h1 {
         margin: 0;
+    }
+}
+@media (min-width: $small) {
+    .container {
+        img {
+            position: sticky;
+            top: 2rem;
+        }
     }
 }
 @media (max-width: $small) {
