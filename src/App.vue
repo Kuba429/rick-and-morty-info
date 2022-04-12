@@ -21,7 +21,8 @@ body {
 #main-container {
     max-width: 100%;
     padding: 2rem;
-    // display: flex;
-    // flex-direction: column;
+    h1 {
+        margin-top: 0;
+    }
 }
 </style>
