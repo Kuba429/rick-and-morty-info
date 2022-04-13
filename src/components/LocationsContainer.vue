@@ -5,11 +5,15 @@
             :location="location"
         />
     </div>
+    <div class="container" v-else>
+        <SkeletonLocationCard v-for="_ in 8" />
+    </div>
 </template>
 
 <script setup lang="ts">
 import { Location } from "../Interfaces";
 import LocationCard from "./LocationCard.vue";
+import SkeletonLocationCard from "./SkeletonLocationCard.vue";
 
 const props = defineProps<{
     locations: Location[];
