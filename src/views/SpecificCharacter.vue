@@ -18,6 +18,7 @@
             <EpisodesContainer :episodes="episodes" />
         </div>
     </div>
+    <SkeletonSpecificCharacter v-else />
 </template>
 
 <script setup lang="ts">
@@ -27,6 +28,7 @@ import { useRoute } from "vue-router";
 import { Character, Episode } from "../Interfaces";
 import EpisodesContainer from "../components/EpisodesContainer.vue";
 import Error404 from "../components/Error404.vue";
+import SkeletonSpecificCharacter from "./skeletonViews/SkeletonSpecificCharacter.vue";
 
 const { id } = useRoute().params;
 const is404 = ref(false);
