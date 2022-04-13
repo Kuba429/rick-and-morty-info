@@ -21,5 +21,9 @@ const { location } = defineProps<{ location: Location }>();
     flex-direction: column;
     color: $light;
     text-decoration: none;
+    &:hover {
+        background-color: rgba($color: $background2, $alpha: 0.5);
+        color: rgba($color: $light, $alpha: 0.7);
+    }
 }
 </style>

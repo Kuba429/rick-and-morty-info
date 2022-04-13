@@ -29,12 +29,26 @@ onMounted(async () => {
     const charactersIDs = response.data.residents.map(
         (resident: string) => resident.split("/")[5]
     );
-    const responseCharacters = await axios.get(
+    let responseCharacters = await axios.get(
         "https://rickandmortyapi.com/api/character/" + charactersIDs
     );
-    characters.value = Array.isArray(responseCharacters.data)
-        ? responseCharacters.data
-        : [responseCharacters.data];
+
+    if (Array.isArray(responseCharacters.data)) {
+        characters.value = responseCharacters.data;
+    } else if (responseCharacters.data.info) {
+        // when location has all characters as residents, api redirects to default character request with pagination and all
+        characters.value = responseCharacters.data.results;
+        while (responseCharacters.data.info.next) {
+            responseCharacters = await axios.get(
+                responseCharacters.data.info.next
+            );
+            characters.value = characters.value.concat(
+                responseCharacters.data.results
+            );
+        }
+    } else {
+        characters.value = [responseCharacters.data];
+    }
 });
 </script>
 
