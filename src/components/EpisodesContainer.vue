@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { Episode } from "../Interfaces";
 import EpisodeCard from "./EpisodeCard.vue";
-import SkeletonEpisodeCard from "./SkeletonEpisodeCard.vue";
+import SkeletonEpisodeCard from "./skeletonComponents/SkeletonEpisodeCard.vue";
 
 const { episodes } = defineProps<{ episodes: Episode[] }>();
 </script>

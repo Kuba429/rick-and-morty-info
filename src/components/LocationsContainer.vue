@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { Location } from "../Interfaces";
 import LocationCard from "./LocationCard.vue";
-import SkeletonLocationCard from "./SkeletonLocationCard.vue";
+import SkeletonLocationCard from "./skeletonComponents/SkeletonLocationCard.vue";
 
 const props = defineProps<{
     locations: Location[];

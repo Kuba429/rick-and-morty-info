@@ -9,7 +9,7 @@
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
-@import "../variables.scss";
+@import "../../variables.scss";
 .card {
     text-decoration: none;
     background-color: $background2;

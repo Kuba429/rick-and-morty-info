@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { Character } from "../Interfaces";
 import CharacterCard from "./CharacterCard.vue";
-import SkeletonCharacterCard from "./SkeletonCharacterCard.vue";
+import SkeletonCharacterCard from "./skeletonComponents/SkeletonCharacterCard.vue";
 
 const props = defineProps<{
     characters: Character[];

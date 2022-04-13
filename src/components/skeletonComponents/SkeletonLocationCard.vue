@@ -7,7 +7,7 @@
 </template>
 
 <style scoped lang="scss">
-@import "../variables.scss";
+@import "../../variables.scss";
 .card {
     padding: 1rem;
     background-color: $background2;

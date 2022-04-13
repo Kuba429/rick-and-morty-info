@@ -14,7 +14,7 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-@import "../variables.scss";
+@import "../../variables.scss";
 .card {
     display: flex;
     flex-direction: column;
