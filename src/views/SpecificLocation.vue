@@ -1,5 +1,6 @@
 <template>
-    <div v-if="location">
+    <Error404 v-if="is404" />
+    <div v-else-if="location">
         <h1>{{ location.name }}</h1>
         <p>
             Type: <span>{{ location.type }}</span>
@@ -18,17 +19,24 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { Character, Location } from "../Interfaces";
 import CharacterContainer from "../components/CharacterContainer.vue";
+import Error404 from "../components/Error404.vue";
 const { id } = useRoute().params;
 const location = ref<Location>();
 const characters = ref<Character[]>([]);
+const is404 = ref(false);
 onMounted(async () => {
-    const response = await axios.get(
-        "https://rickandmortyapi.com/api/location/" + id
-    );
-    location.value = response.data;
-    const charactersIDs = response.data.residents.map(
-        (resident: string) => resident.split("/")[5]
-    );
+    const charactersIDs: string[] = [];
+    try {
+        const response = await axios.get(
+            "https://rickandmortyapi.com/api/location/" + id
+        );
+        location.value = response.data;
+        response.data.residents.forEach((resident: string) => {
+            charactersIDs.push(resident.split("/")[5]);
+        });
+    } catch (error) {
+        is404.value = true;
+    }
     let responseCharacters = await axios.get(
         "https://rickandmortyapi.com/api/character/" + charactersIDs
     );

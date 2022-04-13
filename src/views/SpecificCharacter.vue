@@ -1,5 +1,6 @@
 <template>
-    <div class="container" v-if="character">
+    <Error404 v-if="is404" />
+    <div class="container" v-else-if="character">
         <img :src="character.image" :alt="character.name + ' image'" />
         <div class="data">
             <h1>{{ character.name }}</h1>
@@ -25,21 +26,26 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { Character, Episode } from "../Interfaces";
 import EpisodesContainer from "../components/EpisodesContainer.vue";
+import Error404 from "../components/Error404.vue";
 
 const { id } = useRoute().params;
-
+const is404 = ref(false);
 const character = ref<Character>();
 const episodes = ref<Episode[]>([]);
 onMounted(async () => {
-    const response = await axios.get(
-        "https://rickandmortyapi.com/api/character/" + id
-    );
-    character.value = response.data;
-    // get all episodes for this character
-    const episodesIDs: string[] = [];
-    response.data.episode.forEach((episode: string) => {
-        episodesIDs.push(episode.split("/")[5]);
-    });
+    let episodesIDs: string[] = [];
+    try {
+        const response = await axios.get(
+            "https://rickandmortyapi.com/api/character/" + id
+        );
+        character.value = response.data;
+        // get all episodes for this character
+        response.data.episode.forEach((episode: string) => {
+            episodesIDs.push(episode.split("/")[5]);
+        });
+    } catch (error) {
+        is404.value = true;
+    }
 
     const episodesResponse = await axios.get(
         "https://rickandmortyapi.com/api/episode/" + episodesIDs
