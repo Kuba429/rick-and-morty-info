@@ -15,18 +15,16 @@ const { character } = defineProps<{ character: Character }>();
 <style lang="scss" scoped>
 @import "../variables.scss";
 .card {
-    // background-color: black;
     display: flex;
     flex-direction: column;
     border-radius: 3px;
     overflow: hidden;
-    border: 1px solid transparent;
+    border: 4px solid $background2;
     transition: ease all 50ms;
     color: $light;
     text-decoration: none;
     img {
-        width: auto;
-        height: auto;
+        height: 300px;
         object-fit: cover;
         object-position: center;
     }

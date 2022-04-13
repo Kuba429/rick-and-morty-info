@@ -1,15 +1,19 @@
 <template>
-    <div class="container" v-if="props.characters">
+    <div class="container" v-if="props.characters[0]">
         <CharacterCard
             v-for="character in props.characters"
             :character="character"
         />
+    </div>
+    <div v-else class="container">
+        <SkeletonCharacterCard v-for="i in 8" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { Character } from "../Interfaces";
 import CharacterCard from "./CharacterCard.vue";
+import SkeletonCharacterCard from "./SkeletonCharacterCard.vue";
 
 const props = defineProps<{
     characters: Character[];
