@@ -19,7 +19,7 @@ const { character } = defineProps<{ character: Character }>();
     flex-direction: column;
     border-radius: 3px;
     overflow: hidden;
-    border: 4px solid $background2;
+    border: 3px solid $background2;
     transition: ease all 50ms;
     color: $light;
     text-decoration: none;

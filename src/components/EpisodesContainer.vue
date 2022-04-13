@@ -2,11 +2,15 @@
     <div v-if="episodes.length > 0" class="episode-container">
         <EpisodeCard :episode="episode" v-for="episode in episodes" />
     </div>
+    <div v-else>
+        <SkeletonEpisodeCard v-for="_ in 8" />
+    </div>
 </template>
 
 <script setup lang="ts">
 import { Episode } from "../Interfaces";
 import EpisodeCard from "./EpisodeCard.vue";
+import SkeletonEpisodeCard from "./SkeletonEpisodeCard.vue";
 
 const { episodes } = defineProps<{ episodes: Episode[] }>();
 </script>

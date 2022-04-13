@@ -36,7 +36,7 @@
         justify-content: center;
         align-items: center;
         .text {
-            color: $background;
+            color: transparent;
             background-color: $background;
         }
     }
