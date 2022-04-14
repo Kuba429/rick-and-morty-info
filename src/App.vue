@@ -20,7 +20,9 @@ body {
 }
 #main-container {
     max-width: 100%;
-    padding: 2rem;
+    & > div {
+        padding: 2rem;
+    }
     h1 {
         margin-top: 0;
     }
