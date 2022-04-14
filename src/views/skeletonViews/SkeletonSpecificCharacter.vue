@@ -4,6 +4,7 @@
         <div class="data">
             <h1>character name</h1>
             <p>Status: <span>character status</span></p>
+            <p>Location: <span>location</span></p>
             <p>Species: <span>character species </span></p>
             <p>Gender: <span> character gender</span></p>
             <br />

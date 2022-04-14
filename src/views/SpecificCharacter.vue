@@ -8,6 +8,12 @@
                 Status: <span>{{ character.status }}</span>
             </p>
             <p>
+                Location:
+                <router-link :to="location.url">{{
+                    location.name
+                }}</router-link>
+            </p>
+            <p>
                 Species: <span>{{ character.species }}</span>
             </p>
             <p>
@@ -34,6 +40,7 @@ const { id } = useRoute().params;
 const is404 = ref(false);
 const character = ref<Character>();
 const episodes = ref<Episode[]>([]);
+const location = ref({ name: "unknown", url: "/locations" });
 onMounted(async () => {
     let episodesIDs: string[] = [];
     try {
@@ -45,10 +52,14 @@ onMounted(async () => {
         response.data.episode.forEach((episode: string) => {
             episodesIDs.push(episode.split("/")[5]);
         });
+        // get location of character
+        location.value.name = response.data.location.name;
+        location.value.url =
+            "/location/" + response.data.location.url.split("/")[5];
+        console.log(location.value.url);
     } catch (error) {
         is404.value = true;
     }
-
     const episodesResponse = await axios.get(
         "https://rickandmortyapi.com/api/episode/" + episodesIDs
     );
@@ -72,6 +83,14 @@ onMounted(async () => {
     // width: 100%;
     h1 {
         margin: 0;
+    }
+    a {
+        font-weight: bolder;
+        color: $light;
+        // text-decoration: none;
+        &:hover {
+            color: $accent;
+        }
     }
 }
 @media (min-width: $small) {
