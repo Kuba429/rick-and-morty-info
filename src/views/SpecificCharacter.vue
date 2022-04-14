@@ -54,9 +54,10 @@ onMounted(async () => {
         });
         // get location of character
         location.value.name = response.data.location.name;
-        location.value.url =
-            "/location/" + response.data.location.url.split("/")[5];
-        console.log(location.value.url);
+        const locationID = response.data.location.url.split("/")[5];
+        location.value.url = locationID
+            ? "/location/" + locationID
+            : "/locations";
     } catch (error) {
         is404.value = true;
     }
