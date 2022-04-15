@@ -15,11 +15,13 @@ import Navbar from "./components/Navbar.vue";
 body {
     margin: 0;
     font-family: "Lato", sans-serif;
-    background-color: $background;
+    background-color: $background2;
     color: $light;
 }
 #main-container {
+    min-height: 90vh;
     max-width: 100%;
+    background-color: $background;
     & > div {
         padding: 2rem;
     }
