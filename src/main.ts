@@ -60,6 +60,11 @@ const router = createRouter({
             name: "SpecificEpisode",
             component: () => import("./views/SpecificEpisode.vue"),
         },
+        {
+            path: "/:pathMatch(.*)*",
+            name: "NotFound",
+            component: () => import("./components/Error404.vue"),
+        },
     ],
 });
 createApp(App)
