@@ -75,6 +75,7 @@ onMounted(async () => {
 .container {
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     gap: 1rem;
     img {
         object-fit: cover;
