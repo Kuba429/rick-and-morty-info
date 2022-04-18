@@ -66,6 +66,9 @@ const router = createRouter({
             component: () => import("./components/Error404.vue"),
         },
     ],
+    scrollBehavior() {
+        return { top: 0 };
+    },
 });
 createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
