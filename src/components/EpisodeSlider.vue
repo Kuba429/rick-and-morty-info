@@ -21,7 +21,6 @@ onMounted(async () => {
         const response = await axios.get(
             "https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9"
         );
-        console.log(response.data);
         episodes.value = response.data;
     } catch (err) {
         isError.value = true;
