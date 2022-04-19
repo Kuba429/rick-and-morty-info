@@ -14,7 +14,7 @@ import { onMounted, ref } from "vue";
 import { Character } from "../Interfaces";
 import CharacterCard from "./CharacterCard.vue";
 import SkeletonCharacterCard from "./skeletonComponents/SkeletonCharacterCard.vue";
-const characters = ref<Character[]>();
+const characters = ref<Character[]>([]);
 const isError = ref<boolean>(false);
 onMounted(async () => {
     try {

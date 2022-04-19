@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import Location from "../Interfaces.ts";
+import { Location } from "../Interfaces";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import LocationCard from "./LocationCard.vue";

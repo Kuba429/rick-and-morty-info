@@ -14,7 +14,7 @@ import EpisodeCard from "./EpisodeCard.vue";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import SkeletonEpisodeCard from "./skeletonComponents/SkeletonEpisodeCard.vue";
-const episodes = ref<Episode[]>();
+const episodes = ref<Episode[]>([]);
 const isError = ref(false);
 onMounted(async () => {
     try {
