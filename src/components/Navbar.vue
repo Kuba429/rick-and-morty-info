@@ -31,16 +31,25 @@ a {
     color: $light;
     text-decoration: none;
     padding: 5px 0;
-}
-.router-link-active {
+    transition: ease 0.1s opacity;
+    &:hover {
+        opacity: 70%;
+    }
+    // underline
     position: relative;
     &::before {
         content: "";
         position: absolute;
-        width: 100%;
-        height: 2px;
+        height: 3px;
         background: $accent;
         bottom: 0px;
+        transition: ease 0.3s all;
+        width: 0;
+    }
+}
+.router-link-active {
+    &::before {
+        width: 100%;
     }
 }
 </style>
