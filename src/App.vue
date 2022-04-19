@@ -33,4 +33,11 @@ body {
         margin-top: 0;
     }
 }
+@media (max-width: $small) {
+    #main-container {
+        & > div {
+            padding: 0.5rem;
+        }
+    }
+}
 </style>

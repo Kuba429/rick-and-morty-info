@@ -15,6 +15,7 @@
 @import "../variables.scss";
 nav {
     position: sticky;
+    top: 0;
     padding: 1rem 2rem;
     background-color: $background2;
     margin: 0;
@@ -50,6 +51,11 @@ a {
 .router-link-active {
     &::before {
         width: 100%;
+    }
+}
+@media (max-width: $small) {
+    nav {
+        padding: 1rem 0.5rem;
     }
 }
 </style>

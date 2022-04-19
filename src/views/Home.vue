@@ -4,12 +4,11 @@ import EpisodeSlider from "../components/EpisodeSlider.vue";
 import LocationSlider from "../components/LocationSlider.vue";
 </script>
 <template>
-    <div class="banner">
+    <header class="banner">
         <h1>Rick and Morty</h1>
         <p>Characters, episodes and locations</p>
-    </div>
+    </header>
     <div id="home">
-        <!-- <img src="../assets/banner.png" alt="" /> -->
         <h2>
             Episodes
             <router-link to="/episodes"
@@ -47,7 +46,7 @@ img {
     background-color: $light;
     color: $background2;
     width: 100%;
-    min-height: 30vh;
+    min-height: 40vh;
     font-size: 2rem;
     padding: 0;
     display: flex;
